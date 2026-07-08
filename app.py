@@ -1,9 +1,13 @@
 import streamlit as st
+import subprocess
+import sys
 
-st.title("Test")
+st.write(sys.version)
 
-try:
-    import joblib
-    st.success(f"joblib imported successfully! Version: {joblib.__version__}")
-except Exception as e:
-    st.exception(e)
+result = subprocess.run(
+    [sys.executable, "-m", "pip", "list"],
+    capture_output=True,
+    text=True
+)
+
+st.text(result.stdout)
