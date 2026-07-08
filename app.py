@@ -1,8 +1,5 @@
 import streamlit as st
-import sklearn
-import joblib
-import sys
+import hashlib
 
-st.write("Python:", sys.version)
-st.write("scikit-learn:", sklearn.__version__)
-st.write("joblib:", joblib.__version__)
+with open("gb_booking_model.pkl", "rb") as f:
+    st.write(hashlib.sha256(f.read()).hexdigest())
