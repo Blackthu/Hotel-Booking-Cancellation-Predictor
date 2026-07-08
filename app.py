@@ -1,13 +1,11 @@
 import streamlit as st
-import subprocess
-import sys
+from pathlib import Path
 
-st.write(sys.version)
+st.write("Current directory:", Path.cwd())
 
-result = subprocess.run(
-    [sys.executable, "-m", "pip", "list"],
-    capture_output=True,
-    text=True
-)
+req = Path("requirements.txt")
 
-st.text(result.stdout)
+st.write("requirements.txt exists:", req.exists())
+
+if req.exists():
+    st.code(req.read_text())
