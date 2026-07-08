@@ -1,6 +1,6 @@
+import streamlit as st
+import sklearn
 import joblib
 
-model = joblib.load("gb_booking_model.pkl")
-
-print(type(model))
-print(model)
+st.write("scikit-learn:", sklearn.__version__)
+st.write("joblib:", joblib.__version__)
